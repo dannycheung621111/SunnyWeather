@@ -18,5 +18,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         val danny = "danny"
+        val danny1 = "danny1"
     }
 }
