@@ -11,6 +11,9 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 retrofitCore = "2.6.1"
 converterGson = "2.6.1"
+recyclerview = "1.0.0"
+lifecycleExtension = "2.2.0"
+livedata = "2.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -23,6 +26,9 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitCore"}
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converterGson"}
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview"}
+androidx-lifecycle-core = { group = "androidx.lifecyle", name = "lifecycle-extensions", version.ref = "lifecycleExtension"}
+androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "livedata"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
