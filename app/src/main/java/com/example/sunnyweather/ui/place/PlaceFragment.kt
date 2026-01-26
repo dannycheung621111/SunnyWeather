@@ -21,32 +21,22 @@ class PlaceFragment: Fragment() {
 
     val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
     private lateinit var adapter: PlaceAdapter
-    private lateinit var binding: FragmentPlaceBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = FragmentPlaceBinding.inflate(layoutInflater)
-
-    }
+    private var _binding: FragmentPlaceBinding? = null
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return super.onCreateView(inflater, container, savedInstanceState)
-//        return inflater.inflate(R.layout.fragment_place, container, false)
+        _binding = FragmentPlaceBinding.inflate(layoutInflater)
         return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    }
 
-    @SuppressLint("NotifyDataSetChanged")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.layoutManager = layoutManager
         adapter = PlaceAdapter(this, viewModel.placelist)
@@ -77,6 +67,11 @@ class PlaceFragment: Fragment() {
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
+    }
 
+    @Override
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

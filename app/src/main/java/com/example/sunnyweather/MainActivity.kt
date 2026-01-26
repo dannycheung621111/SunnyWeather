@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val danny = "danny"
-        val danny1 = "danny2"
+//        val danny = "danny"
+//        val danny1 = "danny2"
     }
 }
