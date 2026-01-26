@@ -1,5 +1,6 @@
 package com.example.sunnyweather.logic.network
 
+import com.example.sunnyweather.SunnyWeatherApplication
 import com.example.sunnyweather.logic.model.PlaceResponse
 import kotlinx.coroutines.delay
 import retrofit2.Call
@@ -22,6 +23,9 @@ object SunnyWeatherNetwork {
                     response: Response<T?>
                 ) {
                     val body = response.body()
+                    //debug
+                    val info = body?.toString() ?: "null"
+                    SunnyWeatherApplication.printInfo(" Call<T>.await()", body.toString())
                     if (body != null) continuation.resume(body)     //outside coroutine is resumed to run after resume() is executed.
                     else continuation.resumeWithException(
                         RuntimeException("response body is null"))

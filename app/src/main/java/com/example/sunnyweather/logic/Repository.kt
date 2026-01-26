@@ -1,6 +1,7 @@
 package com.example.sunnyweather.logic
 
 import androidx.lifecycle.liveData
+import com.example.sunnyweather.SunnyWeatherApplication
 import com.example.sunnyweather.logic.model.Place
 import com.example.sunnyweather.logic.network.SunnyWeatherNetwork
 import kotlinx.coroutines.Dispatchers
@@ -20,6 +21,10 @@ object Repository {
             }
         }catch(e: Exception){
 //            Result.failure<List<Place>>(e)    //Failure will return a Result object encapsulates an exception.
+            //debug
+            val info = e.toString()
+            SunnyWeatherApplication.printInfo(" searchPlaces", info)
+
             Result.failure(e)
         }
         emit(result)        //suspend function, set the liveData the new value.
