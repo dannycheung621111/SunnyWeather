@@ -4,6 +4,7 @@ import androidx.lifecycle.liveData
 import com.example.sunnyweather.logic.model.Place
 import com.example.sunnyweather.logic.network.SunnyWeatherNetwork
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 
 object Repository {
 
@@ -18,8 +19,9 @@ object Repository {
                     "Response status is ${placeResponse.status}"))
             }
         }catch(e: Exception){
-            Result.failure<List<Place>>(e)
+//            Result.failure<List<Place>>(e)    //Failure will return a Result object encapsulates an exception.
+            Result.failure(e)
         }
-        emit(result)
+        emit(result)        //suspend function, set the liveData the new value.
     }
 }

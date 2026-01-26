@@ -35,6 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -51,8 +54,11 @@ dependencies {
 //    implementation(libs.androidx.lifecycle.core)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
+    implementation("androidx.recyclerview:recyclerview:1.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
+    implementation("com.google.android.material:material:1.1.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

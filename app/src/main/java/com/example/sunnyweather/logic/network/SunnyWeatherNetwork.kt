@@ -1,6 +1,7 @@
 package com.example.sunnyweather.logic.network
 
 import com.example.sunnyweather.logic.model.PlaceResponse
+import kotlinx.coroutines.delay
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,15 +14,15 @@ object SunnyWeatherNetwork {
     val placeService = ServiceCreator.create<PlaceService>()
     suspend fun searchPlace(query: String) : PlaceResponse = placeService.searchPlace(query).await()
 
-    private suspend fun <T> Call<T>.await(): T {
-        return suspendCoroutine { continuation ->
+    private suspend fun <T> Call<T>.await(): T {        //this is a coroutine created outside the function
+        return suspendCoroutine { continuation ->       //suspendCoroutine suspend the outside coroutine after running the block
             enqueue(object: Callback<T> {
                 override fun onResponse(
                     call: Call<T?>,
                     response: Response<T?>
                 ) {
                     val body = response.body()
-                    if (body != null) continuation.resume(body)
+                    if (body != null) continuation.resume(body)     //outside coroutine is resumed to run after resume() is executed.
                     else continuation.resumeWithException(
                         RuntimeException("response body is null"))
                 }
