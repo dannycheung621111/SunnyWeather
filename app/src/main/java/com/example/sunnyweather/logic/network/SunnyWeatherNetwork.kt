@@ -22,7 +22,7 @@ object SunnyWeatherNetwork {
                     call: Call<T?>,
                     response: Response<T?>
                 ) {
-                    val body = response.body()
+                    val body = response.body()  //body() return  T
                     //debug
                     val info = body?.toString() ?: "null"
                     SunnyWeatherApplication.printInfo(" Call<T>.await()", body.toString())

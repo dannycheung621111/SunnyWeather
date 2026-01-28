@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sunnyweather.databinding.FragmentPlaceBinding
+import com.google.android.material.snackbar.Snackbar
 
 class PlaceFragment: Fragment() {
 
@@ -65,6 +66,9 @@ class PlaceFragment: Fragment() {
             } else {
                 Toast.makeText(activity, "place query failed", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
+                //test
+                val exceptionResult = result.exceptionOrNull().toString()
+                Snackbar.make(binding.root, "Exception = $exceptionResult", Snackbar.LENGTH_LONG).show()
             }
         })
     }

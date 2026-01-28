@@ -10,6 +10,8 @@ import kotlinx.coroutines.delay
 object Repository {
 
     fun searchPlaces(query: String) = liveData(Dispatchers.IO){  //return LiveData<Result<List<Place>>>
+//
+//        this.
         val result = try {
             val placeResponse = SunnyWeatherNetwork.searchPlace(query)      //this is a suspend fun
             if (placeResponse.status == "ok"){
